@@ -5,11 +5,15 @@ async function retrieveAll() {
 }
 
 async function findByUsername(username) {
-    return UserModel.findOne({username: username})
+    return UserModel.findOne({'username': username})
 } 
+async function findByPhoneNumber(phoneNumber) {
+    return UserModel.findOne({'phone': phoneNumber})
+}
 
 
 export default {
     retrieveAll,
     findByUsername,
+    findByPhoneNumber,
 }

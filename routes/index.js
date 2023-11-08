@@ -4,7 +4,7 @@ import hospitalRouter from "./hospitalRoute.js"
 import appointmentRouter from "./appointmentRoute.js"
 
 const router = express.Router();
-router.use("/api/usr", userRouter);
+router.use("/api/user", userRouter);
 router.use("/api/hospital", hospitalRouter);
 router.use("/api/appointment", appointmentRouter);
 
