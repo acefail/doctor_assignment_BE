@@ -15,21 +15,15 @@ const AppointmentSchema = new Schema(
         type: Date,
         
     },
-    name: {
-      type: String,
-      unique: true,
-      required: true,
+    patient: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
     },
-    slots: {
-        type: Number,
-        min: [0, "Must have greater or equal than 0 slots"],
-        required: true,
+    hospital: {
+      type: Schema.Types.ObjectId,
+      ref: "Hospital"
     },
-    phoneNumber: {
-      type: String,
-      required: true,
-    },
-    curableSymtomps: {
+    symptomsList: {
         type: [String],
     },
     address: {
