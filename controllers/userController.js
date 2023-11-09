@@ -1,6 +1,6 @@
 import userRepo from "../db/repos/userRepo.js";
 import genToken from "../utils/genToken.js";
-import { random, authentication } from "../helpers/authenticate.js";
+// import { random, authentication } from "../helpers/authenticate.js";
 import bcrypt from 'bcrypt'
 
 export const findAll = async (req, res, next) => {
