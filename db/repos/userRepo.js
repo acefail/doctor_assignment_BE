@@ -8,7 +8,7 @@ async function findByUsername(username) {
 }
 
 async function findByPhoneNumber(phoneNumber) {
-	return UserModel.findOne({ 'phone': phoneNumber });
+	return UserModel.findOne({ 'phoneNumber': phoneNumber });
 }
 
 async function createUser(User) {

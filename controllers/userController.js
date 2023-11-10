@@ -60,12 +60,12 @@ export const signup = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
   console.log("check login: ", req.body);
-  const { phone, password } = req.body;
-  if (!phone || !password) {
+  const { phoneNumber, password } = req.body;
+  if (!phoneNumber || !password) {
     res.status(400);
     return next(new Error("All fields must be filled"));
   }
-  const user = await userRepo.findByPhoneNumber(phone);
+  const user = await userRepo.findByPhoneNumber(phoneNumber);
   if (user) {
     const checkPassword = await bcrypt.compare(password, user.password);
     if (!checkPassword) {
