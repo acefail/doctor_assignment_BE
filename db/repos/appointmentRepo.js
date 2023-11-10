@@ -9,6 +9,10 @@ async function findByUsername(username) {
     .exec();
 }
 
+async function findByPhoneNumber(patientPhoneNumber) {
+  return AppointmentModel.find({patientPhoneNumber: patientPhoneNumber});
+}
+
 async function createAppointment(Appointment) {
   return AppointmentModel.create(Appointment);
 }
@@ -16,4 +20,5 @@ async function createAppointment(Appointment) {
 export default {
   findByUsername,
   createAppointment,
+  findByPhoneNumber
 };

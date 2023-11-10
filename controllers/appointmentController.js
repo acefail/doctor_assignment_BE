@@ -18,11 +18,11 @@ export const findAllByUsername = async (req, res, next) => {
 
 export const createAppointment = async (req, res, next) => {
   try {
-    const { hospital, createdAt } = req.body;
+    const { hospitalId, patientPhoneNumber, date } = req.body;
     const appointment = await appointmentRepo.createAppointment({
-      date: createdAt,
-      hospital: hospital,
-      patient: null,
+      date: date,
+      hospital: hospitalId,
+      patientPhoneNumber: patientPhoneNumber,
       symptomsList: [],
       address: null,
     });
@@ -31,4 +31,19 @@ export const createAppointment = async (req, res, next) => {
     console.log(error);
     return res.sendStatus(400);
   }
+};
+
+export const findAllByPhoneNumber = async (req, res, next) => {
+  const { phoneNumber } = req.params;
+  const user = await userRepo.findByPhoneNumber(phoneNumber);
+  if (!user) {
+    res.status(400).json({
+      message: "User doesn't exist",
+    });
+    return;
+  }
+  const appointments = await appointmentRepo.findByPhoneNumber(user.phoneNumber);
+  res.status(200).json({
+    message: appointments,
+  });
 };

@@ -15,12 +15,12 @@ const AppointmentSchema = new Schema(
         type: Date,
         
     },
-    patient: {
-        type: Schema.Types.ObjectId,
+    patientPhoneNumber: {
+        type: String,
         ref: "User"
     },
     hospital: {
-      type: Schema.Types.ObjectId,
+      type: Number,
       ref: "Hospital"
     },
     symptomsList: {
@@ -28,7 +28,7 @@ const AppointmentSchema = new Schema(
     },
     address: {
         type: [Number],
-        required: true,
+        // required: true,
     }
 },
   {
