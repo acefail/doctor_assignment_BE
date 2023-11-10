@@ -15,4 +15,5 @@ async function createAppointment(Appointment) {
 
 export default {
   findByUsername,
+  createAppointment,
 };
