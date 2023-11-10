@@ -38,6 +38,7 @@ const UserSchema = new Schema({
 	phoneNumber: {
 		type: String,
 		required: true,
+		unique: true
 	},
 	records: {
 		type: [

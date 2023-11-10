@@ -8,5 +8,6 @@ router.get("/", verifyToken, userController.findAll);
 router.post("/login", userController.login);
 router.post("/signup", userController.signup);
 router.get("/:phoneNumber", userController.findInfoByUsername);
+router.put("/:phoneNumber", userController.updateInfo)
 
 export default router;
