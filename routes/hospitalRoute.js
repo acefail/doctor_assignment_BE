@@ -5,6 +5,6 @@ import { verifyToken } from "../middlewares/authMiddleware.js";
 const router = express.Router();
 
 router.get("/", verifyToken, hospitalController.findAll);
-router.get("/recommend", verifyToken, hospitalController.getRecommendedList);
+router.post("/recommend", verifyToken, hospitalController.getRecommendedList);
 
 export default router;
