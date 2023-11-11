@@ -15,26 +15,20 @@ const AppointmentSchema = new Schema(
         type: Date,
         
     },
-    name: {
-      type: String,
-      unique: true,
-      required: true,
+    patientPhoneNumber: {
+        type: String,
+        ref: "User"
     },
-    slots: {
-        type: Number,
-        min: [0, "Must have greater or equal than 0 slots"],
-        required: true,
+    hospitalId: {
+      type: Number,
+      ref: "Hospital"
     },
-    phoneNumber: {
-      type: String,
-      required: true,
-    },
-    curableSymtomps: {
+    symptomsList: {
         type: [String],
     },
     address: {
         type: [Number],
-        required: true,
+        // required: true,
     }
 },
   {

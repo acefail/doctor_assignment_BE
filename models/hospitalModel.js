@@ -11,6 +11,10 @@ const HospitalSchema = new Schema(
     //   unique: true,
     //   required: true,
     // },
+    id: {
+      type: Number,
+      unique: true
+    },
     name: {
       type: String,
       unique: true,
@@ -21,11 +25,11 @@ const HospitalSchema = new Schema(
         min: [0, "Must have greater or equal than 0 slots"],
         required: true,
     },
-    phoneNumber: {
+    phone: {
       type: String,
       required: true,
     },
-    curableSymtomps: {
+    Curable_symptom_list: {
         type: [String],
     },
     address: {

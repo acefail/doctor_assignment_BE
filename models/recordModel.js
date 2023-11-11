@@ -18,11 +18,11 @@ const MedicalRecordSchema = new Schema(
     },
     hospital: {
         type: {
-            type: Types.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: "Hospital",
         },
     },
-    symtoms: {
+    symptoms: {
         type: [String],
         required: true,
     },
