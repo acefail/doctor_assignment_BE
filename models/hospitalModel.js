@@ -11,6 +11,10 @@ const HospitalSchema = new Schema(
     //   unique: true,
     //   required: true,
     // },
+    id: {
+      type: Number,
+      unique: true
+    },
     name: {
       type: String,
       unique: true,

@@ -21,7 +21,12 @@ async function getRecommendedList(req) {
     return suitables
 }
 
+async function findById(hospitalId) {
+    return HospitalModel.findOne({'id': hospitalId});
+  }
+
 export default {
     retrieveAll,
     getRecommendedList,
+    findById
 }

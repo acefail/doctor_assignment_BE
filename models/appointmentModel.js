@@ -19,7 +19,7 @@ const AppointmentSchema = new Schema(
         type: String,
         ref: "User"
     },
-    hospital: {
+    hospitalId: {
       type: Number,
       ref: "Hospital"
     },

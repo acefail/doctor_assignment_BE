@@ -1,4 +1,5 @@
 import appointmentRepo from "../db/repos/appointmentRepo.js";
+import hospitalRepo from "../db/repos/hospitalRepo.js";
 import userRepo from "../db/repos/userRepo.js";
 
 export const findAllByUsername = async (req, res, next) => {
@@ -18,12 +19,12 @@ export const findAllByUsername = async (req, res, next) => {
 
 export const createAppointment = async (req, res, next) => {
   try {
-    const { hospitalId, patientPhoneNumber, date } = req.body;
+    const { hospitalId, patientPhoneNumber, date, symptomsList } = req.body;
     const appointment = await appointmentRepo.createAppointment({
       date: date,
-      hospital: hospitalId,
+      hospitalId: hospitalId,
       patientPhoneNumber: patientPhoneNumber,
-      symptomsList: [],
+      symptomsList: symptomsList,
       address: null,
     });
     res.status(200).json(appointment).end();
@@ -43,7 +44,19 @@ export const findAllByPhoneNumber = async (req, res, next) => {
     return;
   }
   const appointments = await appointmentRepo.findByPhoneNumber(user.phoneNumber);
+  
+  var result = await Promise.all(appointments.map( async (appointment)=>{
+    const hospital = await hospitalRepo.findById(appointment.hospitalId);
+    const resItem = {
+      hospitalName: hospital.name,
+      hospitalAddress: hospital.address,
+      date: appointment.date,
+      symptomsList: appointment.symptomsList,
+    }
+    return resItem;
+  })) 
+
   res.status(200).json({
-    message: appointments,
+    result: result,
   });
 };
