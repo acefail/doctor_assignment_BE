@@ -4,16 +4,6 @@ export const COLLECTION_NAME = "User";
 export const DOCUMENT_NAME = "User";
 
 const UserSchema = new Schema({
-	// id: {
-	//   type: Number,
-	//   trim: true,
-	//   unique: true,
-	//   required: true,
-	// },
-	// username: {
-	// 	type: String,
-	// 	unique: true,
-	// },
 	gender: {
 		type: String,
 		required: true,

@@ -27,8 +27,8 @@ export const findInfoByUsername = async (req, res, next) => {
 export const signup = async (req, res, next) => {
   console.log("check signup: ", req.body);
   try {
-    const { gender, phone, password, fullName, address, dob } = req.body;
-    if (!phone || !password || !fullName || !address || !dob || !gender) {
+    const { gender, phone, password, fullName, dob } = req.body;
+    if (!phone || !password || !fullName || !dob || !gender) {
       res.status(400);
       return next(new Error("All fields must be filled"));
     }
@@ -47,7 +47,6 @@ export const signup = async (req, res, next) => {
       name: fullName,
       gender: gender,
       dob: dob,
-      address: address,
       records: [],
     });
 

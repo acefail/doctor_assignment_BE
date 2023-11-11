@@ -34,7 +34,7 @@ export const createAppointment = async (req, res, next) => {
 };
 
 export const findAllByPhoneNumber = async (req, res, next) => {
-  const { fullName, phoneNumber, dob, date, symptomsList, address } = req.body;
+  const { phoneNumber } = req.body;
   const user = await userRepo.findByPhoneNumber(phoneNumber);
   if (!user) {
     res.status(400).json({
