@@ -29,6 +29,9 @@ const AppointmentSchema = new Schema(
     address: {
         type: [Number],
         // required: true,
+    },
+    medicalRecord: {
+      type: String
     }
 },
   {
