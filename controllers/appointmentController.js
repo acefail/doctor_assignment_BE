@@ -19,13 +19,14 @@ export const findAllByUsername = async (req, res, next) => {
 
 export const createAppointment = async (req, res, next) => {
   try {
-    const { hospitalId, patientPhoneNumber, date, symptomsList } = req.body;
+    const { hospitalId, patientPhoneNumber, date, symptomsList, medicalRecord } = req.body;
     const appointment = await appointmentRepo.createAppointment({
       date: date,
       hospitalId: hospitalId,
       patientPhoneNumber: patientPhoneNumber,
       symptomsList: symptomsList,
       address: null,
+      medicalRecord: medicalRecord
     });
     res.status(200).json(appointment).end();
   } catch (error) {
@@ -52,6 +53,7 @@ export const findAllByPhoneNumber = async (req, res, next) => {
       hospitalAddress: hospital.address,
       date: appointment.date,
       symptomsList: appointment.symptomsList,
+      medicalRecord: appointment.medicalRecord
     }
     return resItem;
   })) 
