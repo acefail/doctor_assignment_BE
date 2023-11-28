@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: api
+    container_name: api
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_CONNECT=mongodb+srv://trile:db@cluster0.2y9rdfc.mongodb.net/Doctor_appointment?retryWrites=true&w=majority

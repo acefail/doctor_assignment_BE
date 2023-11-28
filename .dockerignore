@@ -1,0 +1,19 @@
+# ignore vscode project config files
+.vscode
+.vs
+
+# ignore logs
+logs
+*.log
+
+# ignore 3rd party lib folders
+node_modules
+
+# Ignore built files
+build/**/*
+
+# git
+.gitignore
+.git
+
+.md
