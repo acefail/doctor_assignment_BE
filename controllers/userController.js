@@ -85,7 +85,7 @@ export const login = async (req, res, next) => {
 export const updateInfo = async (req, res, next) => {
   try {
     const { phoneNumber } = req.params;
-    const { gender, phone, password, fullName, address, dob } = req.body
+    const { gender, phone, password, fullName, address, dob } = req.body;
     var user = await userRepo.findByPhoneNumber(phoneNumber);
     if (!user) {
       res.status(400).json({
@@ -103,7 +103,7 @@ export const updateInfo = async (req, res, next) => {
       address: address,
       dob: dob,
       gender: gender,
-      password: hashPassword
+      password: hashPassword,
     });
 
     res.status(200).json({
