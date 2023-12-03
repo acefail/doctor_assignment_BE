@@ -10,6 +10,8 @@ export const findAll = async (req, res, next) => {
   });
 };
 
+export const aaaa = async (req, res, next) => {};
+
 export const findInfoByUsername = async (req, res, next) => {
   const { phoneNumber } = req.params;
   const user = await userRepo.findByPhoneNumber(phoneNumber);
