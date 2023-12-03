@@ -100,12 +100,7 @@ export const updateInfo = async (req, res, next) => {
     const hashPassword = await bcrypt.hash(password, salt);
 
     const updatedUser = await userRepo.updateUser({
-      phoneNumber: phone,
-      name: fullName,
-      address: address,
-      dob: dob,
-      gender: gender,
-      password: hashPassword,
+      phoneNumber: phone, name: fullName, address: address, dob: dob, gender: gender, password: hashPassword,
     });
 
     res.status(200).json({
