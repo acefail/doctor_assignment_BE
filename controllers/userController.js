@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 
 export const findAll = async (req, res, next) => {
   const users = await userRepo.retrieveAll();
-  res.status(200).json({
+  res.status(201).json({
     messagse: users,
   });
 };
