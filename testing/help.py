@@ -7,4 +7,6 @@ def readData(sheetName):
         values.append(row)      
     print(values)
     return values
-LINK_URL = "http://localhost:3000/"
+LINK_URL = "https://doctor-assignment-fe-deployment.vercel.app/"
+PHONE = "0123456789"
+PASSWORD = "nguyenxuantrinh"

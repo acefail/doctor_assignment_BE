@@ -16,8 +16,8 @@ class SubmitForm(unittest.TestCase):
 		self.vars = {}
 		self.driver.get(help.LINK_URL)
 		self.driver.set_window_size(1323,1025)
-		self.driver.find_element('xpath', '//*[@id="loginForm_phone"]').send_keys("0123456790")
-		self.driver.find_element('xpath', '//*[@id="loginForm_password"]').send_keys("nguyenxuantrinh")
+		self.driver.find_element('xpath', '//*[@id="loginForm_phone"]').send_keys(help.PHONE)
+		self.driver.find_element('xpath', '//*[@id="loginForm_password"]').send_keys(help.PASSWORD)
 		self.driver.find_element('xpath', '//*[@id="loginForm"]/div[5]/div/div/div/div/button').click()
 		time.sleep(2)
 		self.driver.find_element('xpath', '//*[@id="personalHealthForm"]/div[5]/div/div[2]/div/div/div/span').click()
