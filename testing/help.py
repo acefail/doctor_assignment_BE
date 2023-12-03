@@ -1,0 +1,12 @@
+from openpyxl import load_workbook
+def readData(sheetName):
+    data_test = load_workbook("./dataSheet.xlsx")
+    values = []
+    s = data_test[sheetName]
+    for row in s.iter_rows(min_row=2, values_only=True):  # Assuming your data starts from the second row
+        values.append(row)      
+    print(values)
+    return values
+LINK_URL = "https://doctor-assignment-fe-deployment.vercel.app/"
+PHONE = "0123456789"
+PASSWORD = "nguyenxuantrinh"
