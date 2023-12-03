@@ -19,14 +19,20 @@ export const findAllByUsername = async (req, res, next) => {
 
 export const createAppointment = async (req, res, next) => {
   try {
-    const { hospitalId, patientPhoneNumber, date, symptomsList, medicalRecord } = req.body;
+    const {
+      hospitalId,
+      patientPhoneNumber,
+      date,
+      symptomsList,
+      medicalRecord,
+    } = req.body;
     const appointment = await appointmentRepo.createAppointment({
       date: date,
       hospitalId: hospitalId,
       patientPhoneNumber: patientPhoneNumber,
       symptomsList: symptomsList,
       address: null,
-      medicalRecord: medicalRecord
+      medicalRecord: medicalRecord,
     });
     res.status(200).json(appointment).end();
   } catch (error) {
@@ -44,19 +50,23 @@ export const findAllByPhoneNumber = async (req, res, next) => {
     });
     return;
   }
-  const appointments = await appointmentRepo.findByPhoneNumber(user.phoneNumber);
-  
-  var result = await Promise.all(appointments.map( async (appointment)=>{
-    const hospital = await hospitalRepo.findById(appointment.hospitalId);
-    const resItem = {
-      hospitalName: hospital.name,
-      hospitalAddress: hospital.address,
-      date: appointment.date,
-      symptomsList: appointment.symptomsList,
-      medicalRecord: appointment.medicalRecord
-    }
-    return resItem;
-  })) 
+  const appointments = await appointmentRepo.findByPhoneNumber(
+    user.phoneNumber
+  );
+
+  var result = await Promise.all(
+    appointments.map(async (appointment) => {
+      const hospital = await hospitalRepo.findById(appointment.hospitalId);
+      const resItem = {
+        hospitalName: hospital.name,
+        hospitalAddress: hospital.address,
+        date: appointment.date,
+        symptomsList: appointment.symptomsList,
+        medicalRecord: appointment.medicalRecord,
+      };
+      return resItem;
+    })
+  );
 
   res.status(200).json({
     result: result,
