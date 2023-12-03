@@ -83,7 +83,7 @@ export const login = async (req, res, next) => {
   }
 };
 
-// Cập nhật thông tin người dùng
+// Update Info User
 export const updateInfo = async (req, res, next) => {
   try {
     const { phoneNumber } = req.params;
@@ -100,16 +100,11 @@ export const updateInfo = async (req, res, next) => {
     const hashPassword = await bcrypt.hash(password, salt);
 
     const updatedUser = await userRepo.updateUser({
-      phoneNumber: phone,
-      name: fullName,
-      address: address,
-      dob: dob,
-      gender: gender,
-      password: hashPassword,
+      phoneNumber: phone, name: fullName, address: address, dob: dob, gender: gender, password: hashPassword,
     });
 
     res.status(200).json({
-      message: "Update successful!",
+      message: "User information updated successfully!",
     });
   } catch (error) {
     console.log(error);

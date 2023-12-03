@@ -15,16 +15,12 @@ async function createUser(User) {
   return UserModel.create(User);
 }
 
+//Update Info User
 async function updateUser(User) {
   return UserModel.updateOne(
     { phoneNumber: User.phoneNumber },
     {
-      phoneNumber: User.phoneNumber,
-      name: User.name,
-      address: User.address,
-      dob: User.dob,
-      gender: User.gender,
-      password: User.password,
+      phoneNumber: User.phoneNumber, name: User.name, address: User.address, dob: User.dob, gender: User.gender, password: User.password,
     }
   );
 }
