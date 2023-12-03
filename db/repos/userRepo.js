@@ -15,14 +15,7 @@ async function createUser(User) {
   return UserModel.create(User);
 }
 
-async function updateUser(User) {
-  return UserModel.updateOne(
-    { phoneNumber: User.phoneNumber },
-    {
-      phoneNumber: User.phoneNumber, name: User.name, address: User.address, dob: User.dob, gender: User.gender, password: User.password,
-    }
-  );
-}
+
 
 export default {
   retrieveAll,
