@@ -10,6 +10,8 @@ export const findAll = async (req, res, next) => {
   });
 };
 
+export const aaaa = async (req, res, next) => {};
+
 export const findInfoByUsername = async (req, res, next) => {
   const { phoneNumber } = req.params;
   const user = await userRepo.findByPhoneNumber(phoneNumber);
@@ -81,7 +83,7 @@ export const login = async (req, res, next) => {
   }
 };
 
-// Cập nhật thông tin người dùng
+// Update Info User
 export const updateInfo = async (req, res, next) => {
   try {
     const { phoneNumber } = req.params;
@@ -107,7 +109,7 @@ export const updateInfo = async (req, res, next) => {
     });
 
     res.status(200).json({
-      message: "Update successful!",
+      message: "User information updated successfully!",
     });
   } catch (error) {
     console.log(error);
