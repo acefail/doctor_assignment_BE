@@ -83,4 +83,31 @@ export const login = async (req, res, next) => {
   }
 };
 
+// Update Info User
+export const updateInfo = async (req, res, next) => {
+  try {
+    const { phoneNumber } = req.params;
+    const { gender, phone, password, fullName, address, dob } = req.body;
+    var user = await userRepo.findByPhoneNumber(phoneNumber);
+    if (!user) {
+      res.status(400).json({
+        message: "User doesn't exist",
+      });
+      return;
+    }
 
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(password, salt);
+
+    const updatedUser = await userRepo.updateUser({
+      phoneNumber: phone, name: fullName, address: address, dob: dob, gender: gender, password: hashPassword,
+    });
+
+    res.status(200).json({
+      message: "User information updated successfully!",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
+  }
+};
